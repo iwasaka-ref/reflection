@@ -55,15 +55,38 @@
 
 <div class="section">
   <h2>BASIC INFORMATION</h2>
-  <label>Date</label><input id="date">
-  <label>Competition / League</label><input id="league">
-  <label>Match</label><input id="match">
-  <label>Venue</label><input id="venue">
-  <label>Role</label><input id="role">
+
+  <label>Date</label>
+  <select id="date">
+    <option value=""></option>
+    <option>2025-03-01</option>
+    <option>2025-03-02</option>
+    <option>2025-03-03</option>
+    <option>2025-03-04</option>
+    <option>2025-03-05</option>
+  </select>
+
+  <label>Competition / League</label>
+  <input id="league">
+
+  <label>Match</label>
+  <input id="match">
+
+  <label>Venue</label>
+  <input id="venue">
+
+  <label>Role</label>
+  <select id="role">
+    <option value=""></option>
+    <option>Referee</option>
+    <option>Assistant Referee</option>
+    <option>4th Official</option>
+  </select>
 </div>
 
 <div class="section">
   <h2>PRE-MATCH</h2>
+
   <label>Physical condition (1–5)</label>
   <select id="physical">
     <option></option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
@@ -80,8 +103,13 @@
 
 <div class="section">
   <h2>POST-MATCH</h2>
-  <label>Overall performance ( /10 )</label>
-  <input id="performance">
+
+  <label>Overall performance</label>
+  <select id="performance">
+    <option value=""></option>
+    <option>10</option><option>9</option><option>8</option><option>7</option><option>6</option>
+    <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option><option>0</option>
+  </select>
 
   <label>What went well</label>
   <textarea id="good"></textarea>
@@ -95,6 +123,7 @@
 
 <div class="section">
   <h2>ACTION PLAN</h2>
+
   <label>Next match goal</label>
   <textarea id="next"></textarea>
 
@@ -105,14 +134,14 @@
 <button class="save" onclick="save()">Save</button>
 
 <script>
-  const ids = document.querySelectorAll("input, textarea, select");
+  const elements = document.querySelectorAll("input, textarea, select");
 
-  ids.forEach(el => {
+  elements.forEach(el => {
     el.value = localStorage.getItem(el.id) || "";
   });
 
   function save() {
-    ids.forEach(el => {
+    elements.forEach(el => {
       localStorage.setItem(el.id, el.value);
     });
     alert("保存しました");
